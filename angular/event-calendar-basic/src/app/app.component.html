@@ -1,0 +1,18 @@
+<div class="app">
+  <h1>TimelineKit - Event Calendar</h1>
+  <div class="toolbar">
+    <button (click)="setView('day')">Day</button>
+    <button (click)="setView('week')">Week</button>
+    <button (click)="setView('month')">Month</button>
+    <span class="separator"></span>
+    <button (click)="today()">Today</button>
+    <button (click)="previous()">Previous</button>
+    <button (click)="next()">Next</button>
+    <span class="separator"></span>
+    <button (click)="undo()">Undo</button>
+    <button (click)="redo()">Redo</button>
+  </div>
+  <div class="calendar-container">
+    <gk-event-calendar></gk-event-calendar>
+  </div>
+</div>
