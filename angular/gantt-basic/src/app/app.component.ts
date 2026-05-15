@@ -1,6 +1,5 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { GanttChart } from '@timelinekit/angular';
-import { setLicense, Task, TaskLink } from '@timelinekit/core';
+import { GanttChart, setLicense, Task, TaskLink } from '@timelinekit/angular';
 
 setLicense('');
 

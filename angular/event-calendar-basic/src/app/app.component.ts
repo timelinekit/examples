@@ -1,6 +1,5 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { EventCalendar } from '@timelinekit/angular';
-import { setLicense, Meeting, Appointment, CalendarTask, Deadline } from '@timelinekit/core';
+import { EventCalendar, setLicense, Meeting, Appointment, CalendarTask, Deadline } from '@timelinekit/angular';
 
 setLicense('');
 

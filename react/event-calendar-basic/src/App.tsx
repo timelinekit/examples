@@ -1,6 +1,5 @@
 import { useCallback, useRef } from 'react';
-import { EventCalendar, EventCalendarRef } from '@timelinekit/react';
-import { setLicense, Meeting, Appointment, CalendarTask, Deadline } from '@timelinekit/core';
+import { EventCalendar, EventCalendarRef, setLicense, Meeting, Appointment, CalendarTask, Deadline } from '@timelinekit/react';
 import '@timelinekit/core/styles';
 import './App.css';
 

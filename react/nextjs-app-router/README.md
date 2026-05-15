@@ -15,8 +15,7 @@ The Gantt chart itself contains a realistic 4-phase software project (Planning, 
 ```tsx
 'use client';
 
-import { GanttChart, GanttChartRef } from '@timelinekit/react';
-import { setLicense } from '@timelinekit/core';
+import { GanttChart, GanttChartRef, setLicense } from '@timelinekit/react';
 import '@timelinekit/core/styles';
 
 // All TimelineKit logic goes here

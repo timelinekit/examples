@@ -1,6 +1,5 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { ResourceScheduler } from '@timelinekit/angular';
-import { setLicense, SchedulerResource, SchedulerEvent } from '@timelinekit/core';
+import { ResourceScheduler, setLicense, SchedulerResource, SchedulerEvent } from '@timelinekit/angular';
 
 setLicense('');
 

@@ -8,7 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@timelinekit/core": "latest",
     "@timelinekit/react": "latest",
     "next": "^15.0.0",
     "react": "^19.0.0",

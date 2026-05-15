@@ -1,6 +1,5 @@
 import { useCallback, useRef } from 'react';
-import { ResourceScheduler, ResourceSchedulerRef } from '@timelinekit/react';
-import { setLicense, SchedulerResource, SchedulerEvent } from '@timelinekit/core';
+import { ResourceScheduler, ResourceSchedulerRef, setLicense, SchedulerResource, SchedulerEvent } from '@timelinekit/react';
 import '@timelinekit/core/styles';
 import './App.css';
 

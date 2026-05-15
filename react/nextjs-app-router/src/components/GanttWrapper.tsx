@@ -1,8 +1,7 @@
 'use client';
 
 import { useRef, useCallback } from 'react';
-import { GanttChart, GanttChartRef } from '@timelinekit/react';
-import { setLicense, Task, TaskLink } from '@timelinekit/core';
+import { GanttChart, GanttChartRef, setLicense, Task, TaskLink } from '@timelinekit/react';
 import '@timelinekit/core/styles';
 import styles from './GanttWrapper.module.css';
 
