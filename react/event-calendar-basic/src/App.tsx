@@ -1,61 +1,57 @@
-import { useCallback, useRef } from 'react';
-import { EventCalendar, EventCalendarRef, setLicense, Meeting, Appointment, CalendarTask, Deadline } from '@timelinekit/react';
-import '@timelinekit/core/styles';
+import { useRef, useLayoutEffect } from 'react';
+import { EventCalendar, EventCalendarRef, setLicense } from '@timelinekit/react';
+import '@timelinekit/core/styles/ec';
 import './App.css';
 
 setLicense(import.meta.env.VITE_TK_LICENSE_KEY ?? '');
 
+const data = {
+  calendars: [
+    { id: 'c1', name: 'Work', color: 0, isVisible: true, isDefault: true },
+    { id: 'c2', name: 'Personal', color: 1, isVisible: true },
+  ],
+  items: [
+    // Meetings
+    { id: 'm1', calendarId: 'c1', title: 'Sprint Planning',
+      startTime: '2027-01-05T10:00:00', endTime: '2027-01-05T12:00:00',
+      type: 'meeting', responseStatus: 'accepted' },
+    { id: 'm2', calendarId: 'c1', title: 'Design Review',
+      startTime: '2027-01-06T14:00:00', endTime: '2027-01-06T15:30:00',
+      type: 'meeting', responseStatus: 'accepted' },
+    { id: 'm3', calendarId: 'c1', title: 'Client Call',
+      startTime: '2027-01-07T11:00:00', endTime: '2027-01-07T12:00:00',
+      type: 'meeting', responseStatus: 'tentative' },
+    { id: 'm4', calendarId: 'c1', title: 'Sprint Review',
+      startTime: '2027-01-09T14:00:00', endTime: '2027-01-09T15:30:00',
+      type: 'meeting', responseStatus: 'accepted' },
+
+    // Recurring standup
+    { id: 'r1', calendarId: 'c1', title: 'Daily Standup',
+      startTime: '2027-01-05T09:00:00', endTime: '2027-01-05T09:15:00',
+      type: 'meeting', responseStatus: 'accepted',
+      recurrenceRule: { frequency: 'weekly', byDay: [{ day: 'mo' }, { day: 'tu' }, { day: 'we' }, { day: 'th' }, { day: 'fr' }] } },
+
+    // Task & deadline
+    { id: 't1', calendarId: 'c1', title: 'Documentation Update',
+      startTime: '2027-01-07T10:00:00', endTime: '2027-01-07T12:00:00', type: 'task' },
+    { id: 'd1', calendarId: 'c1', title: 'Release Deadline',
+      startTime: '2027-01-09T17:00:00', endTime: '2027-01-09T17:00:00', type: 'deadline' },
+
+    // Personal
+    { id: 'p1', calendarId: 'c2', title: 'Dentist',
+      startTime: '2027-01-06T08:00:00', endTime: '2027-01-06T09:00:00', type: 'appointment' },
+    { id: 'p2', calendarId: 'c2', title: 'Team Offsite',
+      startTime: '2027-01-08', endTime: '2027-01-09', isAllDay: true, type: 'holiday' },
+  ],
+  currentDate: '2027-01-05',
+  viewMode: 'week',
+};
+
 export function App() {
   const ref = useRef<EventCalendarRef>(null);
 
-  const handleReady = useCallback(() => {
-    const calendar = ref.current;
-    if (!calendar) return;
-
-    // Meetings
-    calendar.data.addItem(Meeting.fromAny({
-      id: 'm1',
-      title: 'Team Standup',
-      startTime: '2027-01-05T09:00:00',
-      endTime: '2027-01-05T09:30:00',
-      calendarId: 'work',
-    }));
-
-    calendar.data.addItem(Meeting.fromAny({
-      id: 'm2',
-      title: 'Sprint Review',
-      startTime: '2027-01-09T14:00:00',
-      endTime: '2027-01-09T15:30:00',
-      calendarId: 'work',
-    }));
-
-    // Appointment
-    calendar.data.addItem(Appointment.fromAny({
-      id: 'a1',
-      title: 'Client Call',
-      startTime: '2027-01-06T11:00:00',
-      endTime: '2027-01-06T12:00:00',
-    }));
-
-    // Task
-    calendar.data.addItem(CalendarTask.fromAny({
-      id: 't1',
-      title: 'Documentation Update',
-      startTime: '2027-01-07T10:00:00',
-      endTime: '2027-01-07T12:00:00',
-    }));
-
-    // Deadline
-    calendar.data.addItem(Deadline.fromAny({
-      id: 'd1',
-      title: 'Release Deadline',
-      startTime: '2027-01-09T17:00:00',
-      endTime: '2027-01-09T17:00:00',
-    }));
-
-    // Navigate to the week of the sample data
-    calendar.currentDate = new Date(2027, 0, 5);
-    calendar.viewMode = 'week';
+  useLayoutEffect(() => {
+    ref.current?.load(JSON.stringify(data));
   }, []);
 
   return (
@@ -74,7 +70,7 @@ export function App() {
         <button onClick={() => ref.current?.redo()}>Redo</button>
       </div>
       <div className="calendar-container">
-        <EventCalendar ref={ref} onReady={handleReady} />
+        <EventCalendar ref={ref} />
       </div>
     </div>
   );

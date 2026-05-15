@@ -65,6 +65,8 @@ echo "NEXT_PUBLIC_TK_LICENSE_KEY=your-key-here" > .env.local
 - **Live Demos**
   - [GanttChart Demo](https://timelinekit.com/gantt-chart/demo)
   - [ResourceScheduler Demo](https://timelinekit.com/resource-scheduler/demo)
+  - [EventCalendar Demo](https://timelinekit.com/event-calendar/demo)
 - **API Reference**
   - [GanttChart API](https://timelinekit.com/docs/gantt-chart/api-reference)
   - [ResourceScheduler API](https://timelinekit.com/docs/resource-scheduler/api-reference)
+  - [EventCalendar API](https://timelinekit.com/docs/event-calendar/api-reference)
