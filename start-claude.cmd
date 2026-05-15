@@ -1,0 +1,1 @@
+claude --add-dir d:\Projects\TimelineKit --dangerously-skip-permissions 
