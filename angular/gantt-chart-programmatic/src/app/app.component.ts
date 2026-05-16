@@ -31,7 +31,6 @@ export class AppComponent implements AfterViewInit {
     // Development (summary with subtasks)
     const dev = list.createTask('2');
     dev.name = 'Development';
-    dev.type = 'summary';
     list.addTask(dev);
 
     const frontend = list.createTask('3');
