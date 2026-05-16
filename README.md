@@ -2,6 +2,10 @@
 
 A collection of ready-to-run examples demonstrating [TimelineKit](https://timelinekit.com) components.
 
+Adresář d:\Projects\TimelineKit\packages obsahuje zdrojáky komponent, jde o tři npm packages, core - vlastní komponenty, react a angular - wrappery
+
+Adresář d:\Projects\TimelineKit\apps\web obsahuje web app
+
 ## Components
 
 TimelineKit provides three main components:
@@ -21,6 +25,14 @@ TimelineKit provides three main components:
 | [resource-scheduler-basic](./react/resource-scheduler-basic) | Basic resource scheduler with drag & drop |
 | [event-calendar-basic](./react/event-calendar-basic) | Event calendar with day/week/month views |
 | [nextjs-app-router](./react/nextjs-app-router) | Integration with Next.js App Router |
+
+### Vue
+
+| Example | Description |
+|---------|-------------|
+| [gantt-basic](./vue/gantt-basic) | Basic Gantt chart with tasks, links, and milestones |
+| [resource-scheduler-basic](./vue/resource-scheduler-basic) | Basic resource scheduler with drag & drop |
+| [event-calendar-basic](./vue/event-calendar-basic) | Event calendar with day/week/month views |
 
 ### Angular
 
@@ -52,7 +64,7 @@ All examples work out of the box without a license key. Without a key, TimelineK
 To remove the watermark, get a license key at [timelinekit.com](https://timelinekit.com) and set it as an environment variable:
 
 ```bash
-# Vite-based examples (react/gantt-basic, react/resource-scheduler-basic, etc.)
+# Vite-based examples (react/*, vue/*)
 echo "VITE_TK_LICENSE_KEY=your-key-here" > .env
 
 # Next.js example (react/nextjs-app-router)
