@@ -2,10 +2,6 @@
 
 A collection of ready-to-run examples demonstrating [TimelineKit](https://timelinekit.com) components.
 
-Adresář d:\Projects\TimelineKit\packages obsahuje zdrojáky komponent, jde o tři npm packages, core - vlastní komponenty, react a angular - wrappery
-
-Adresář d:\Projects\TimelineKit\apps\web obsahuje web app
-
 ## Components
 
 TimelineKit provides three main components:
@@ -51,6 +47,14 @@ cd react/gantt-basic   # or any other example
 npm install
 npm run dev
 ```
+
+For image, PDF, and Excel export support, also install the optional dependencies:
+
+```bash
+npm install html2canvas jspdf exceljs
+```
+
+To install and build **all** examples at once, run `scripts\setup.cmd`.
 
 ## Requirements
 
