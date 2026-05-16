@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, viewChild, AfterViewInit } from '@angular/core';
 import { GanttChart, setLicense } from '@timelinekit/angular';
 
 setLicense('');
@@ -43,31 +43,31 @@ const data = {
 })
 export class AppComponent implements AfterViewInit {
 
-  @ViewChild(GanttChart) gantt?: GanttChart;
+  gantt = viewChild.required(GanttChart);
 
   ngAfterViewInit() {
-    if (!this.gantt) return;
-    this.gantt.load(JSON.stringify(data));
-    this.gantt.zoomToFit();
+    const gantt = this.gantt();
+    gantt.load(JSON.stringify(data));
+    gantt.zoomToFit();
   }
 
   onZoomIn() {
-    this.gantt?.zoomIn();
+    this.gantt().zoomIn();
   }
 
   onZoomOut() {
-    this.gantt?.zoomOut();
+    this.gantt().zoomOut();
   }
 
   onZoomToFit() {
-    this.gantt?.zoomToFit();
+    this.gantt().zoomToFit();
   }
 
   onUndo() {
-    this.gantt?.undo();
+    this.gantt().undo();
   }
 
   onRedo() {
-    this.gantt?.redo();
+    this.gantt().redo();
   }
 }

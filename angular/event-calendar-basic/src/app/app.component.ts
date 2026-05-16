@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, viewChild, AfterViewInit } from '@angular/core';
 import { EventCalendar, setLicense } from '@timelinekit/angular';
 
 setLicense('');
@@ -53,33 +53,33 @@ const data = {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements AfterViewInit {
-  @ViewChild(EventCalendar) calendar!: EventCalendar;
+  calendar = viewChild.required(EventCalendar);
 
   ngAfterViewInit() {
-    this.calendar.load(JSON.stringify(data));
+    this.calendar().load(JSON.stringify(data));
   }
 
   setView(mode: 'day' | 'week' | 'month') {
-    this.calendar.viewMode = mode;
+    this.calendar().viewMode = mode;
   }
 
   today() {
-    this.calendar.today();
+    this.calendar().today();
   }
 
   previous() {
-    this.calendar.previous();
+    this.calendar().previous();
   }
 
   next() {
-    this.calendar.next();
+    this.calendar().next();
   }
 
   undo() {
-    this.calendar.undo();
+    this.calendar().undo();
   }
 
   redo() {
-    this.calendar.redo();
+    this.calendar().redo();
   }
 }

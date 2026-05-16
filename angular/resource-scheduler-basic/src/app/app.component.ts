@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, viewChild, AfterViewInit } from '@angular/core';
 import { ResourceScheduler, setLicense, SchedulerResource, SchedulerEvent } from '@timelinekit/angular';
 
 setLicense('');
@@ -18,11 +18,10 @@ function createResource(id: string, name: string, type: string): SchedulerResour
 })
 export class AppComponent implements AfterViewInit {
 
-  @ViewChild(ResourceScheduler) scheduler!: ResourceScheduler;
+  scheduler = viewChild.required(ResourceScheduler);
 
   ngAfterViewInit() {
-    const scheduler = this.scheduler;
-    if (!scheduler) return;
+    const scheduler = this.scheduler();
 
     // Add resources - 5 team members
     scheduler.data.addResource(createResource('r1', 'Alice Chen — Developer', 'person'));
@@ -49,22 +48,22 @@ export class AppComponent implements AfterViewInit {
   }
 
   zoomIn() {
-    this.scheduler.zoomIn();
+    this.scheduler().zoomIn();
   }
 
   zoomOut() {
-    this.scheduler.zoomOut();
+    this.scheduler().zoomOut();
   }
 
   zoomToFit() {
-    this.scheduler.zoomToFit();
+    this.scheduler().zoomToFit();
   }
 
   undo() {
-    this.scheduler.undo();
+    this.scheduler().undo();
   }
 
   redo() {
-    this.scheduler.redo();
+    this.scheduler().redo();
   }
 }

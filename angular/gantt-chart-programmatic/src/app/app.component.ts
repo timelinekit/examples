@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, viewChild, AfterViewInit } from '@angular/core';
 import { GanttChart, setLicense } from '@timelinekit/angular';
 
 setLicense('');
@@ -12,12 +12,11 @@ setLicense('');
 })
 export class AppComponent implements AfterViewInit {
 
-  @ViewChild(GanttChart) gantt?: GanttChart;
+  gantt = viewChild.required(GanttChart);
 
   ngAfterViewInit() {
-    if (!this.gantt) return;
-
-    const list = this.gantt.list;
+    const gantt = this.gantt();
+    const list = gantt.list;
     list.clear();
 
     // Planning
@@ -76,26 +75,26 @@ export class AppComponent implements AfterViewInit {
     list.addLink(review, testing, 'finishToStart');
     list.addLink(testing, launch, 'finishToStart');
 
-    this.gantt.zoomToFit();
+    gantt.zoomToFit();
   }
 
   zoomIn() {
-    this.gantt?.zoomIn();
+    this.gantt().zoomIn();
   }
 
   zoomOut() {
-    this.gantt?.zoomOut();
+    this.gantt().zoomOut();
   }
 
   zoomToFit() {
-    this.gantt?.zoomToFit();
+    this.gantt().zoomToFit();
   }
 
   undo() {
-    this.gantt?.undo();
+    this.gantt().undo();
   }
 
   redo() {
-    this.gantt?.redo();
+    this.gantt().redo();
   }
 }

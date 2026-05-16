@@ -16,7 +16,6 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "polyfills": ["zone.js"],
             "styles": [
               "node_modules/@timelinekit/core/dist/styles/index.css",
               "src/styles.css"
