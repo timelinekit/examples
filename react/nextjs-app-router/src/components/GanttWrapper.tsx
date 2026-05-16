@@ -13,13 +13,13 @@ const data = {
     { id: '2', name: 'Market Research', startTime: '2027-01-05', endTime: '2027-01-09', type: 'task', progress: 100 },
     { id: '3', name: 'Requirements Analysis', startTime: '2027-01-12', endTime: '2027-01-16', type: 'task', progress: 100 },
     { id: '4', name: 'Technical Spike', startTime: '2027-01-12', endTime: '2027-01-14', type: 'task', progress: 100 },
-    { id: '5', name: 'Plan Sign-off', startTime: '2027-01-23', type: 'milestone' },
+    { id: '5', name: 'Plan Sign-off', startTime: '2027-01-23', endTime: '2027-01-23', type: 'milestone' },
 
     { id: '6', name: 'Design', startTime: '2027-01-26', endTime: '2027-02-13', type: 'summary', subtasks: ['7', '8', '9', '10'] },
     { id: '7', name: 'Wireframes & Prototyping', startTime: '2027-01-26', endTime: '2027-01-30', type: 'task', progress: 80 },
     { id: '8', name: 'Visual Design', startTime: '2027-02-02', endTime: '2027-02-06', type: 'task', progress: 60 },
     { id: '9', name: 'Design System Setup', startTime: '2027-02-02', endTime: '2027-02-10', type: 'task', progress: 40 },
-    { id: '10', name: 'Design Review', startTime: '2027-02-13', type: 'milestone' },
+    { id: '10', name: 'Design Review', startTime: '2027-02-13', endTime: '2027-02-13', type: 'milestone' },
 
     { id: '11', name: 'Development', startTime: '2027-02-16', endTime: '2027-04-03', type: 'summary', subtasks: ['12', '13', '14', '15', '16', '17'] },
     { id: '12', name: 'Frontend Implementation', startTime: '2027-02-16', endTime: '2027-03-13', type: 'task', progress: 25 },
@@ -27,13 +27,13 @@ const data = {
     { id: '14', name: 'Database & Migrations', startTime: '2027-02-16', endTime: '2027-02-27', type: 'task' },
     { id: '15', name: 'Auth & Security', startTime: '2027-03-02', endTime: '2027-03-13', type: 'task' },
     { id: '16', name: 'API Integration', startTime: '2027-03-16', endTime: '2027-03-27', type: 'task' },
-    { id: '17', name: 'Dev Complete', startTime: '2027-04-03', type: 'milestone' },
+    { id: '17', name: 'Dev Complete', startTime: '2027-04-03', endTime: '2027-04-03', type: 'milestone' },
 
     { id: '18', name: 'Testing & Launch', startTime: '2027-04-06', endTime: '2027-04-24', type: 'summary', subtasks: ['19', '20', '21', '22'] },
     { id: '19', name: 'Unit & Integration Tests', startTime: '2027-04-06', endTime: '2027-04-10', type: 'task' },
     { id: '20', name: 'E2E Testing', startTime: '2027-04-13', endTime: '2027-04-17', type: 'task' },
     { id: '21', name: 'Staging Deployment', startTime: '2027-04-20', endTime: '2027-04-22', type: 'task' },
-    { id: '22', name: 'Production Launch', startTime: '2027-04-24', type: 'milestone' },
+    { id: '22', name: 'Production Launch', startTime: '2027-04-24', endTime: '2027-04-24', type: 'milestone' },
   ],
   links: [
     { id: 'l1', from: '2', to: '3', type: 'finishToStart' },

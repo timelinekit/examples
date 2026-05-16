@@ -8,7 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@timelinekit/react": "latest",
+    "@timelinekit/core": "^1.0.9",
+    "@timelinekit/react": "^1.0.9",
     "exceljs": "^4.4.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.2",
