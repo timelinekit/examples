@@ -17,7 +17,7 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "styles": [
-              "node_modules/@timelinekit/core/dist/styles/ec.css",
+              "node_modules/@timelinekit/core/dist/styles/index.css",
               "src/styles.css"
             ],
             "scripts": []

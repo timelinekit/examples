@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { EventCalendar, type EventCalendarRef, setLicense } from '@timelinekit/vue';
-import '@timelinekit/core/styles/ec';
+import '@timelinekit/core/styles';
 import './App.css';
 
 setLicense(import.meta.env.VITE_TK_LICENSE_KEY ?? '');

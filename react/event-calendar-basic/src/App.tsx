@@ -1,6 +1,6 @@
 import { useRef, useLayoutEffect } from 'react';
 import { EventCalendar, EventCalendarRef, setLicense } from '@timelinekit/react';
-import '@timelinekit/core/styles/ec';
+import '@timelinekit/core/styles';
 import './App.css';
 
 setLicense(import.meta.env.VITE_TK_LICENSE_KEY ?? '');
