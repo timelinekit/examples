@@ -17,6 +17,7 @@ TimelineKit provides three main components:
 | Example | Description |
 |---------|-------------|
 | [gantt-basic](./react/gantt-basic) | Basic Gantt chart with tasks, links, and milestones |
+| [gantt-chart-programmatic](./react/gantt-chart-programmatic) | Programmatic control of Gantt chart via component ref |
 | [gantt-resource-management](./react/gantt-resource-management) | Gantt chart with resource assignment and working calendar |
 | [resource-scheduler-basic](./react/resource-scheduler-basic) | Basic resource scheduler with drag & drop |
 | [event-calendar-basic](./react/event-calendar-basic) | Event calendar with day/week/month views |
@@ -27,6 +28,7 @@ TimelineKit provides three main components:
 | Example | Description |
 |---------|-------------|
 | [gantt-basic](./vue/gantt-basic) | Basic Gantt chart with tasks, links, and milestones |
+| [gantt-chart-programmatic](./vue/gantt-chart-programmatic) | Programmatic control of Gantt chart via component ref |
 | [resource-scheduler-basic](./vue/resource-scheduler-basic) | Basic resource scheduler with drag & drop |
 | [event-calendar-basic](./vue/event-calendar-basic) | Event calendar with day/week/month views |
 
@@ -35,6 +37,7 @@ TimelineKit provides three main components:
 | Example | Description |
 |---------|-------------|
 | [gantt-basic](./angular/gantt-basic) | Basic Gantt chart with tasks, links, and milestones |
+| [gantt-chart-programmatic](./angular/gantt-chart-programmatic) | Programmatic control of Gantt chart via component ref |
 | [resource-scheduler-basic](./angular/resource-scheduler-basic) | Basic resource scheduler with drag & drop |
 | [event-calendar-basic](./angular/event-calendar-basic) | Event calendar with day/week/month views |
 
