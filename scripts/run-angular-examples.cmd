@@ -9,7 +9,7 @@ echo   TimelineKit - Angular Examples
 echo   ========================================
 
 :: --- Setup ---
-call "%BASE%\setup.cmd" %*
+call "%BASE%\setup.cmd" --angular %*
 if errorlevel 1 (
     echo.
     echo   Setup failed. Aborting.
