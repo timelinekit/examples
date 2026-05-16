@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set "ROOT=%~dp0.."
+set "ROOT=%~dp0..\.."
 set "FRAMEWORK="
 set "BASE_PORT=4000"
 
@@ -85,7 +85,7 @@ echo.
 echo   Stopping servers...
 for %%P in (%PORTS%) do (
     for /f "tokens=5" %%A in ('netstat -ano 2^>nul ^| findstr "LISTENING" ^| findstr ":%%P "') do (
-        taskkill /f /pid %%A >nul 2>&1
+        taskkill /f /t /pid %%A >nul 2>&1
     )
 )
 echo   Done.
@@ -104,7 +104,7 @@ pushd "%DIR%"
 findstr /m "next" package.json >nul 2>&1
 if not errorlevel 1 (
     echo   [%NAME%] http://localhost:%LPORT%
-    start /b "" cmd /c "cd /d "%DIR%" && npx next dev --port %LPORT% >nul 2>&1"
+    start /b "" cmd /c "cd /d "%DIR%" && npx next dev --port %LPORT% >nul 2>&1" <nul
     popd
     exit /b 0
 )
@@ -113,13 +113,13 @@ if not errorlevel 1 (
 findstr /m "ng serve" package.json >nul 2>&1
 if not errorlevel 1 (
     echo   [%NAME%] http://localhost:%LPORT%
-    start /b "" cmd /c "cd /d "%DIR%" && npx ng serve --port %LPORT% >nul 2>&1"
+    start /b "" cmd /c "cd /d "%DIR%" && npx ng serve --port %LPORT% >nul 2>&1" <nul
     popd
     exit /b 0
 )
 
 :: Default: Vite (React/Vue)
 echo   [%NAME%] http://localhost:%LPORT%
-start /b "" cmd /c "cd /d "%DIR%" && npx vite --port %LPORT% >nul 2>&1"
+start /b "" cmd /c "cd /d "%DIR%" && npx vite --port %LPORT% >nul 2>&1" <nul
 popd
 exit /b 0

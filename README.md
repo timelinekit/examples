@@ -54,7 +54,15 @@ For image, PDF, and Excel export support, also install the optional dependencies
 npm install html2canvas jspdf exceljs
 ```
 
-To install and build **all** examples at once, run `scripts\setup.cmd`.
+To install, build, and run **all** examples for a framework at once, use:
+
+```bash
+scripts\run-react-examples.cmd     # React examples
+scripts\run-vue-examples.cmd       # Vue examples
+scripts\run-angular-examples.cmd   # Angular examples
+```
+
+By default, only TimelineKit packages are updated (quick mode). Pass `--reinstall` for a clean install of all dependencies.
 
 ## Requirements
 
