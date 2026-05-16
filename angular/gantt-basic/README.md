@@ -26,29 +26,20 @@ npm run dev
 ## Key Concepts
 
 ```typescript
-// Use ViewChild to access the GanttChart component
-@ViewChild(GanttChart) gantt?: GanttChart;
+// Load data as JSON in ngAfterViewInit
+const data = {
+  tasks: [
+    { id: '1', name: 'My Task', startTime: '2027-01-05', endTime: '2027-01-09', type: 'task', progress: 50 },
+    { id: '2', name: 'Milestone', startTime: '2027-01-09', type: 'milestone' },
+  ],
+  links: [
+    { id: 'l1', from: '1', to: '2', type: 'finishToStart' },
+  ],
+};
 
-// Add tasks programmatically in ngAfterViewInit
 ngAfterViewInit() {
-  const task = this.gantt!.list.addTask(new Task({
-    id: '1',
-    name: 'My Task',
-    startTime: '2027-01-05',
-    endTime: '2027-01-09',
-    progress: 50
-  }));
-
-  // Create dependencies between tasks
-  this.gantt!.list.addLink(new TaskLink({
-    id: 'l1',
-    from: taskA,
-    to: taskB,
-    type: 'finishToStart'
-  }));
-
-  // Zoom to fit all tasks
-  this.gantt!.zoomToFit();
+  this.gantt.load(JSON.stringify(data));
+  this.gantt.zoomToFit();
 }
 ```
 

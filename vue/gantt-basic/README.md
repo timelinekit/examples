@@ -28,20 +28,23 @@ npm run dev
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue';
-import { GanttChart, type GanttChartRef, Task, TaskLink } from '@timelinekit/vue';
+import { GanttChart, type GanttChartRef } from '@timelinekit/vue';
 
-// Create a template ref to access the Gantt API
 const ganttRef = ref<GanttChartRef>();
 
+const data = {
+  tasks: [
+    { id: '1', name: 'My Task', startTime: '2027-01-05', endTime: '2027-01-09', type: 'task', progress: 50 },
+    { id: '2', name: 'Milestone', startTime: '2027-01-09', type: 'milestone' },
+  ],
+  links: [
+    { id: 'l1', from: '1', to: '2', type: 'finishToStart' },
+  ],
+};
+
 function handleReady() {
-  // Add tasks programmatically
-  const task = ganttRef.value!.list.addTask(new Task({
-    id: '1',
-    name: 'My Task',
-    startTime: '2027-01-05',
-    endTime: '2027-01-09',
-    progress: 50
-  }));
+  ganttRef.value!.load(JSON.stringify(data));
+  ganttRef.value!.zoomToFit();
 }
 </script>
 

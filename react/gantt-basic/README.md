@@ -31,22 +31,21 @@ npm run dev
 // Create a ref to access the Gantt API
 const ref = useRef<GanttChartRef>(null);
 
-// Add tasks programmatically
-const task = gantt.list.addTask(new Task({
-  id: '1',
-  name: 'My Task',
-  startTime: '2027-01-05',
-  endTime: '2027-01-09',
-  progress: 50
-}));
+// Load data as JSON
+const data = {
+  tasks: [
+    { id: '1', name: 'My Task', startTime: '2027-01-05', endTime: '2027-01-09', type: 'task', progress: 50 },
+    { id: '2', name: 'Milestone', startTime: '2027-01-09', type: 'milestone' },
+  ],
+  links: [
+    { id: 'l1', from: '1', to: '2', type: 'finishToStart' },
+  ],
+};
 
-// Create dependencies between tasks
-gantt.list.addLink(new TaskLink({
-  id: 'l1',
-  from: taskA,
-  to: taskB,
-  type: 'finishToStart'
-}));
+useEffect(() => {
+  ref.current!.load(JSON.stringify(data));
+  ref.current!.zoomToFit();
+}, []);
 
 // Use toolbar actions
 ref.current?.zoomIn();
