@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { GanttChart, type GanttChartRef, setLicense } from '@timelinekit/vue';
 import '@timelinekit/core/styles';
 import './App.css';
