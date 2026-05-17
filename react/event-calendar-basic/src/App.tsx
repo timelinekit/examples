@@ -47,7 +47,7 @@ const data = {
   viewMode: 'week',
 };
 
-export function App() {
+export default function App() {
   const ref = useRef<EventCalendarRef>(null);
 
   useLayoutEffect(() => {

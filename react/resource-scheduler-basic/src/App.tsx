@@ -11,7 +11,7 @@ function createResource(id: string, name: string, type: string): SchedulerResour
   return resource;
 }
 
-export function App() {
+export default function App() {
   const ref = useRef<ResourceSchedulerRef>(null);
 
   const handleReady = useCallback(() => {

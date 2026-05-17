@@ -5,7 +5,7 @@ import './App.css';
 
 setLicense(import.meta.env.VITE_TK_LICENSE_KEY ?? '');
 
-export function App() {
+export default function App() {
   const ref = useRef<GanttChartRef>(null);
 
   const handleReady = useCallback(() => {

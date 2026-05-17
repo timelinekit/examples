@@ -48,7 +48,7 @@ const data = {
   ],
 };
 
-export function App() {
+export default function App() {
   const ref = useRef<GanttChartRef>(null);
 
   useEffect(() => {
