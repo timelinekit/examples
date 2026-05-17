@@ -8,18 +8,18 @@ setLicense(import.meta.env.VITE_TK_LICENSE_KEY ?? '');
 const data = {
   tasks: [
     { id: '1', name: 'Project Planning', startTime: '2027-01-05', endTime: '2027-01-16', type: 'summary', subtasks: ['2', '3'] },
-    { id: '2', name: 'Research & Discovery', startTime: '2027-01-05', endTime: '2027-01-09', type: 'task', progress: 100 },
-    { id: '3', name: 'Requirements Gathering', startTime: '2027-01-12', endTime: '2027-01-16', type: 'task', progress: 75 },
+    { id: '2', name: 'Research & Discovery', startTime: '2027-01-05', endTime: '2027-01-09', type: 'task', progress: 100, parent: '1' },
+    { id: '3', name: 'Requirements Gathering', startTime: '2027-01-12', endTime: '2027-01-16', type: 'task', progress: 75, parent: '1' },
 
     { id: '4', name: 'Design Phase', startTime: '2027-01-19', endTime: '2027-02-06', type: 'summary', subtasks: ['5', '6', '7'] },
-    { id: '5', name: 'Wireframes', startTime: '2027-01-19', endTime: '2027-01-23', type: 'task', progress: 50 },
-    { id: '6', name: 'UI Design', startTime: '2027-01-26', endTime: '2027-02-03', type: 'task' },
-    { id: '7', name: 'Design Approval', startTime: '2027-02-06', endTime: '2027-02-06', type: 'milestone' },
+    { id: '5', name: 'Wireframes', startTime: '2027-01-19', endTime: '2027-01-23', type: 'task', progress: 50, parent: '4' },
+    { id: '6', name: 'UI Design', startTime: '2027-01-26', endTime: '2027-02-03', type: 'task', parent: '4' },
+    { id: '7', name: 'Design Approval', startTime: '2027-02-06', endTime: '2027-02-06', type: 'milestone', parent: '4' },
 
     { id: '8', name: 'Development', startTime: '2027-02-09', endTime: '2027-03-20', type: 'summary', subtasks: ['9', '10', '11'] },
-    { id: '9', name: 'Frontend Development', startTime: '2027-02-09', endTime: '2027-03-06', type: 'task' },
-    { id: '10', name: 'Backend Development', startTime: '2027-02-09', endTime: '2027-03-13', type: 'task' },
-    { id: '11', name: 'Integration & Testing', startTime: '2027-03-16', endTime: '2027-03-20', type: 'task' },
+    { id: '9', name: 'Frontend Development', startTime: '2027-02-09', endTime: '2027-03-06', type: 'task', parent: '8' },
+    { id: '10', name: 'Backend Development', startTime: '2027-02-09', endTime: '2027-03-13', type: 'task', parent: '8' },
+    { id: '11', name: 'Integration & Testing', startTime: '2027-03-16', endTime: '2027-03-20', type: 'task', parent: '8' },
 
     { id: '12', name: 'Launch', startTime: '2027-03-23', type: 'milestone' },
   ],
