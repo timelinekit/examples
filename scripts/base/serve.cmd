@@ -110,7 +110,7 @@ if not errorlevel 1 (
 )
 
 :: Check if it's an Angular project (ng serve)
-findstr /m "ng serve" package.json >nul 2>&1
+findstr /m /c:"ng serve" package.json >nul 2>&1
 if not errorlevel 1 (
     echo   [%NAME%] http://localhost:%LPORT%
     start /b "" cmd /c "cd /d "%DIR%" && npx ng serve --port %LPORT% >nul 2>&1" <nul
