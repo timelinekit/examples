@@ -1,5 +1,6 @@
-import { Component, viewChild, AfterViewInit } from '@angular/core';
+import { Component, viewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { GanttChart, setLicense } from '@timelinekit/angular';
+import { Subscription } from 'rxjs';
 
 setLicense('');
 
@@ -10,9 +11,11 @@ setLicense('');
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnDestroy {
 
   gantt = viewChild.required(GanttChart);
+  clickedTask = '';
+  private sub?: Subscription;
 
   ngAfterViewInit() {
     const gantt = this.gantt();
@@ -76,6 +79,14 @@ export class AppComponent implements AfterViewInit {
     list.addLink(testing, launch, 'finishToStart');
 
     gantt.zoomToFit();
+
+    this.sub = gantt.events.taskClick$.subscribe((args) => {
+      this.clickedTask = `Clicked: ${args.task.name} (ID: ${args.task.id})`;
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
   }
 
   zoomIn() {

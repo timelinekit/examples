@@ -40,6 +40,15 @@ h1 {
   background: #f0f0f0;
 }
 
+.status-bar {
+  padding: 8px 14px;
+  background: #e8f4fd;
+  border: 1px solid #b3d9f2;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: #1a5276;
+}
+
 .gantt-container {
   flex: 1;
   border: 1px solid #e0e0e0;

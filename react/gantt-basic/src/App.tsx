@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { GanttChart, GanttChartRef, setLicense } from '@timelinekit/react';
 import '@timelinekit/core/styles';
 import './App.css';
@@ -38,11 +38,17 @@ const data = {
 
 export default function App() {
   const ref = useRef<GanttChartRef>(null);
+  const [clickedTask, setClickedTask] = useState<string>('');
 
   useEffect(() => {
     if (!ref.current) return;
     ref.current.load(JSON.stringify(data));
     ref.current.zoomToFit();
+
+    const sub = ref.current.events.taskClick$.subscribe((args) => {
+      setClickedTask(`Clicked: ${args.task.name} (ID: ${args.task.id})`);
+    });
+    return () => sub.unsubscribe();
   }, []);
 
   return (
@@ -55,6 +61,7 @@ export default function App() {
         <button onClick={() => ref.current?.undo()}>Undo</button>
         <button onClick={() => ref.current?.redo()}>Redo</button>
       </div>
+      {clickedTask && <div className="status-bar">{clickedTask}</div>}
       <div className="gantt-container">
         <GanttChart ref={ref} />
       </div>

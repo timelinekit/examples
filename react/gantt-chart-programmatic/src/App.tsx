@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { GanttChart, GanttChartRef, setLicense } from '@timelinekit/react';
 import '@timelinekit/core/styles';
 import './App.css';
@@ -7,6 +7,15 @@ setLicense(import.meta.env.VITE_TK_LICENSE_KEY ?? '');
 
 export default function App() {
   const ref = useRef<GanttChartRef>(null);
+  const [clickedTask, setClickedTask] = useState<string>('');
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const sub = ref.current.events.taskClick$.subscribe((args) => {
+      setClickedTask(`Clicked: ${args.task.name} (ID: ${args.task.id})`);
+    });
+    return () => sub.unsubscribe();
+  }, []);
 
   const handleReady = useCallback(() => {
     const gantt = ref.current;
@@ -84,6 +93,7 @@ export default function App() {
         <button onClick={() => ref.current?.undo()}>Undo</button>
         <button onClick={() => ref.current?.redo()}>Redo</button>
       </div>
+      {clickedTask && <div className="status-bar">{clickedTask}</div>}
       <div className="gantt-container">
         <GanttChart ref={ref} onReady={handleReady} />
       </div>
