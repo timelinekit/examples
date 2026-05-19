@@ -7,9 +7,6 @@
     <button (click)="undo()">Undo</button>
     <button (click)="redo()">Redo</button>
   </div>
-  @if (clickedTask) {
-    <div class="status-bar">{{ clickedTask }}</div>
-  }
   <div class="gantt-container">
     <gk-gantt-chart></gk-gantt-chart>
   </div>

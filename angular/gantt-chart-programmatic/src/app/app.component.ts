@@ -14,7 +14,6 @@ setLicense('');
 export class AppComponent implements AfterViewInit, OnDestroy {
 
   gantt = viewChild.required(GanttChart);
-  clickedTask = '';
   private sub?: Subscription;
 
   ngAfterViewInit() {
@@ -82,7 +81,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     gantt.zoomToFit();
 
     this.sub = gantt.events.taskClick$.subscribe((args) => {
-      this.clickedTask = `Clicked: ${args.task.name} (ID: ${args.task.id})`;
+      alert(`Clicked: ${args.task.name} (ID: ${args.task.id})`);
     });
   }
 

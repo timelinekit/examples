@@ -7,7 +7,6 @@ import './App.css';
 setLicense(import.meta.env.VITE_TK_LICENSE_KEY ?? '');
 
 const ganttRef = ref<GanttChartRef>();
-const clickedTask = ref('');
 
 function handleReady() {
   const gantt = ganttRef.value;
@@ -76,7 +75,7 @@ function handleReady() {
   gantt.zoomToFit();
 
   gantt.events.taskClick$.subscribe((args) => {
-    clickedTask.value = `Clicked: ${args.task.name} (ID: ${args.task.id})`;
+    alert(`Clicked: ${args.task.name} (ID: ${args.task.id})`);
   });
 }
 </script>
@@ -91,7 +90,6 @@ function handleReady() {
       <button @click="ganttRef?.undo()">Undo</button>
       <button @click="ganttRef?.redo()">Redo</button>
     </div>
-    <div v-if="clickedTask" class="status-bar">{{ clickedTask }}</div>
     <div class="gantt-container">
       <GanttChart ref="ganttRef" @ready="handleReady" />
     </div>
