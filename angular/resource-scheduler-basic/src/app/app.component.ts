@@ -47,7 +47,7 @@ export class AppComponent implements AfterViewInit {
     scheduler.zoomToFit();
 
     scheduler.events.eventClick$.subscribe((args) => {
-      alert(`Clicked: ${args.event.title} (ID: ${args.event.id})`);
+      alert(`Clicked: ${args.event.name} (ID: ${args.event.id})`);
     });
   }
 
