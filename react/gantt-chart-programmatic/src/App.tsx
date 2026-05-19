@@ -63,6 +63,7 @@ export default function App() {
     testing.name = 'Testing';
     testing.startTime = new Date('2027-02-02');
     testing.endTime = new Date('2027-02-13');
+    testing.color = 2;
     list.addTask(testing);
 
     // Launch (milestone)

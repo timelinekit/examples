@@ -17,7 +17,7 @@ const data = {
     { id: '7', name: 'Design Approval', startTime: '2027-02-06', endTime: '2027-02-06', type: 'milestone', parent: '4' },
 
     { id: '8', name: 'Development', startTime: '2027-02-09', endTime: '2027-03-20', type: 'summary', subtasks: ['9', '10', '11'] },
-    { id: '9', name: 'Frontend Development', startTime: '2027-02-09', endTime: '2027-03-06', type: 'task', parent: '8' },
+    { id: '9', name: 'Frontend Development', startTime: '2027-02-09', endTime: '2027-03-06', type: 'task', color: 2, parent: '8' },
     { id: '10', name: 'Backend Development', startTime: '2027-02-09', endTime: '2027-03-13', type: 'task', parent: '8' },
     { id: '11', name: 'Integration & Testing', startTime: '2027-03-16', endTime: '2027-03-20', type: 'task', parent: '8' },
 
