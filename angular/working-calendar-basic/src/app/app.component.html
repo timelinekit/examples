@@ -1,0 +1,16 @@
+<div class="app">
+  <h1>TimelineKit - Working Calendar</h1>
+  <div class="toolbar">
+    <button (click)="toggleEdit()">{{ canEdit ? 'Lock' : 'Unlock' }}</button>
+    <button (click)="toggleTheme()">{{ isDark ? 'Light' : 'Dark' }}</button>
+    <span class="separator"></span>
+    <button (click)="validate()">Validate</button>
+    <button (click)="reset()">Reset</button>
+    @if (status) {
+      <span class="status">{{ status }}</span>
+    }
+  </div>
+  <div class="editor-container">
+    <gk-working-calendar></gk-working-calendar>
+  </div>
+</div>

@@ -9,6 +9,7 @@ TimelineKit provides three main components:
 - **GanttChart** - Project scheduling with tasks, dependencies, milestones, and resource management
 - **ResourceScheduler** - Resource-based scheduling with time-blocked events
 - **EventCalendar** - Calendar views (day/week/month) with recurrence support
+- **WorkingCalendarEditor** - Interactive editor for working days, shifts, and holidays
 
 ## Examples
 
@@ -21,6 +22,7 @@ TimelineKit provides three main components:
 | [gantt-resource-management](./react/gantt-resource-management) | Gantt chart with resource assignment and working calendar |
 | [resource-scheduler-basic](./react/resource-scheduler-basic) | Basic resource scheduler with drag & drop |
 | [event-calendar-basic](./react/event-calendar-basic) | Event calendar with day/week/month views |
+| [working-calendar-basic](./react/working-calendar-basic) | Working calendar editor with theme switching and validation |
 | [nextjs-app-router](./react/nextjs-app-router) | Integration with Next.js App Router |
 
 ### Vue
@@ -31,6 +33,7 @@ TimelineKit provides three main components:
 | [gantt-chart-programmatic](./vue/gantt-chart-programmatic) | Programmatic control of Gantt chart via component ref |
 | [resource-scheduler-basic](./vue/resource-scheduler-basic) | Basic resource scheduler with drag & drop |
 | [event-calendar-basic](./vue/event-calendar-basic) | Event calendar with day/week/month views |
+| [working-calendar-basic](./vue/working-calendar-basic) | Working calendar editor with theme switching and validation |
 
 ### Angular
 
@@ -40,6 +43,7 @@ TimelineKit provides three main components:
 | [gantt-chart-programmatic](./angular/gantt-chart-programmatic) | Programmatic control of Gantt chart via component ref |
 | [resource-scheduler-basic](./angular/resource-scheduler-basic) | Basic resource scheduler with drag & drop |
 | [event-calendar-basic](./angular/event-calendar-basic) | Event calendar with day/week/month views |
+| [working-calendar-basic](./angular/working-calendar-basic) | Working calendar editor with theme switching and validation |
 
 ## Getting Started
 
@@ -97,3 +101,4 @@ echo "NEXT_PUBLIC_TK_LICENSE_KEY=your-key-here" > .env.local
   - [GanttChart API](https://timelinekit.com/docs/gantt-chart/api-reference)
   - [ResourceScheduler API](https://timelinekit.com/docs/resource-scheduler/api-reference)
   - [EventCalendar API](https://timelinekit.com/docs/event-calendar/api-reference)
+  - [WorkingCalendar API](https://timelinekit.com/docs/working-calendar/api-reference)
