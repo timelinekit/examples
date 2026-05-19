@@ -51,7 +51,13 @@ export default function App() {
   const ref = useRef<EventCalendarRef>(null);
 
   useLayoutEffect(() => {
-    ref.current?.load(JSON.stringify(data));
+    if (!ref.current) return;
+    ref.current.load(JSON.stringify(data));
+
+    const sub = ref.current.events.entryClick$.subscribe((args) => {
+      alert(`Clicked: ${args.entry.title} (ID: ${args.entry.id})`);
+    });
+    return () => sub.unsubscribe();
   }, []);
 
   return (

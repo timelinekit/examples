@@ -56,7 +56,12 @@ export class AppComponent implements AfterViewInit {
   calendar = viewChild.required(EventCalendar);
 
   ngAfterViewInit() {
-    this.calendar().load(JSON.stringify(data));
+    const calendar = this.calendar();
+    calendar.load(JSON.stringify(data));
+
+    calendar.events.entryClick$.subscribe((args) => {
+      alert(`Clicked: ${args.entry.title} (ID: ${args.entry.id})`);
+    });
   }
 
   setView(mode: 'day' | 'week' | 'month') {

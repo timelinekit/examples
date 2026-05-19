@@ -40,6 +40,10 @@ export default function App() {
 
     // Zoom to fit all events
     scheduler.zoomToFit();
+
+    scheduler.events.eventClick$.subscribe((args) => {
+      alert(`Clicked: ${args.event.title} (ID: ${args.event.id})`);
+    });
   }, []);
 
   return (

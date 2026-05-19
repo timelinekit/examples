@@ -51,7 +51,13 @@ const data = {
 const calendarRef = ref<EventCalendarRef>();
 
 onMounted(() => {
-  calendarRef.value?.load(JSON.stringify(data));
+  const calendar = calendarRef.value;
+  if (!calendar) return;
+  calendar.load(JSON.stringify(data));
+
+  calendar.events.entryClick$.subscribe((args) => {
+    alert(`Clicked: ${args.entry.title} (ID: ${args.entry.id})`);
+  });
 });
 </script>
 
