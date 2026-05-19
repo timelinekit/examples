@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@timelinekit/core": "^1.0.15",
-    "@timelinekit/react": "^1.0.15",
+    "@timelinekit/core": "^1.0.17",
+    "@timelinekit/react": "^1.0.17",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

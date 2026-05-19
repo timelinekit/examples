@@ -13,8 +13,8 @@
     "@angular/core": "^19.0.0",
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
-    "@timelinekit/angular": "^1.0.15",
-    "@timelinekit/core": "^1.0.15",
+    "@timelinekit/angular": "^1.0.17",
+    "@timelinekit/core": "^1.0.17",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
