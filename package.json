@@ -1,0 +1,9 @@
+{
+  "name": "timelinekit-examples",
+  "private": true,
+  "workspaces": [
+    "react/*",
+    "vue/*",
+    "angular/*"
+  ]
+}

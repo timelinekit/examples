@@ -41,15 +41,11 @@ echo.
 
 for /d %%D in ("%ROOT%\%FRAMEWORK%\*") do (
     if exist "%%D\package.json" (
-        if exist "%%D\node_modules" (
-            set "NAME=%%~nxD"
-            call :launch "%%D" "!NAME!" "!PORT!"
-            set "PORTS=!PORTS! !PORT!"
-            set /a PORT+=1
-            set /a COUNT+=1
-        ) else (
-            echo   [%%~nxD] Skipped - no node_modules ^(run setup.cmd first^)
-        )
+        set "NAME=%%~nxD"
+        call :launch "%%D" "!NAME!" "!PORT!"
+        set "PORTS=!PORTS! !PORT!"
+        set /a PORT+=1
+        set /a COUNT+=1
     )
 )
 
@@ -66,10 +62,8 @@ timeout /t 5 /nobreak >nul
 set "PORT=%BASE_PORT%"
 for /d %%D in ("%ROOT%\%FRAMEWORK%\*") do (
     if exist "%%D\package.json" (
-        if exist "%%D\node_modules" (
-            start "" "http://localhost:!PORT!"
-            set /a PORT+=1
-        )
+        start "" "http://localhost:!PORT!"
+        set /a PORT+=1
     )
 )
 

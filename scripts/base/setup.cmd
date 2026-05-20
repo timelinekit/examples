@@ -33,11 +33,61 @@ echo   Frameworks:%FRAMEWORKS%
 echo   =======================================
 echo.
 
-:: --- Collect all example directories ---
+:: --- Install dependencies (workspace root) ---
+pushd "%ROOT%"
+
+if "%REINSTALL%"=="1" (
+    echo   Cleaning node_modules...
+    if exist "node_modules" rmdir /s /q "node_modules" >nul 2>&1
+    if exist "package-lock.json" del /q "package-lock.json" >nul 2>&1
+    :: Clean leftover per-project node_modules (from pre-workspace setup)
+    for %%F in (%FRAMEWORKS%) do (
+        for /d %%D in ("%%F\*") do (
+            if exist "%%D\node_modules" rmdir /s /q "%%D\node_modules" >nul 2>&1
+            if exist "%%D\package-lock.json" del /q "%%D\package-lock.json" >nul 2>&1
+        )
+    )
+    echo   Installing all dependencies...
+    call npm install --loglevel error
+    if errorlevel 1 (
+        echo   npm install FAILED
+        popd
+        exit /b 1
+    )
+    echo   Dependencies installed.
+) else (
+    if not exist "node_modules" (
+        echo   No node_modules found, running full install...
+        call npm install --loglevel error
+        if errorlevel 1 (
+            echo   npm install FAILED
+            popd
+            exit /b 1
+        )
+        echo   Dependencies installed.
+    ) else (
+        echo   Updating TimelineKit packages...
+        for %%F in (%FRAMEWORKS%) do (
+            for /d %%D in ("%%F\*") do (
+                if exist "%%D\package.json" (
+                    call npm install @timelinekit/core@latest @timelinekit/%%F@latest -w %%F/%%~nxD --loglevel error >nul 2>&1
+                    if errorlevel 1 (
+                        echo   [%%F/%%~nxD] Update FAILED
+                    )
+                )
+            )
+        )
+        echo   TimelineKit packages updated.
+    )
+)
+
+popd
+
+:: --- Build projects ---
 for %%F in (%FRAMEWORKS%) do (
     for /d %%D in ("%ROOT%\%%F\*") do (
         if exist "%%D\package.json" (
-            call :process "%%D" "%%~nxD" "%%F"
+            call :build "%%D" "%%~nxD" "%%F"
         )
     )
 )
@@ -54,58 +104,15 @@ if "%FAILED%"=="" (
 echo.
 exit /b %FAIL_COUNT%
 
-:: --- Process a single example ---
-:process
+:: --- Build a single project ---
+:build
 set "DIR=%~1"
 set "NAME=%~2"
 set "FRAMEWORK=%~3"
 set /a COUNT+=1
 
-pushd "%DIR%"
-
-if "%REINSTALL%"=="1" (
-    :: Reinstall mode: clean install
-    echo   [%FRAMEWORK%/%NAME%] Installing...
-    if exist "node_modules" rmdir /s /q "node_modules" >nul 2>&1
-    if exist "package-lock.json" del /q "package-lock.json" >nul 2>&1
-
-    call npm install --loglevel error >nul 2>&1
-    if errorlevel 1 (
-        echo   [%FRAMEWORK%/%NAME%] npm install FAILED
-        set /a FAIL_COUNT+=1
-        set "FAILED=!FAILED!  %FRAMEWORK%/%NAME% (install) "
-        popd
-        exit /b 0
-    )
-
-    call npm install html2canvas jspdf exceljs --loglevel error >nul 2>&1
-) else (
-    :: Quick mode (default): only reinstall TimelineKit + optional packages
-    if not exist "node_modules" (
-        echo   [%FRAMEWORK%/%NAME%] No node_modules, running full install...
-        call npm install --loglevel error >nul 2>&1
-        if errorlevel 1 (
-            echo   [%FRAMEWORK%/%NAME%] npm install FAILED
-            set /a FAIL_COUNT+=1
-            set "FAILED=!FAILED!  %FRAMEWORK%/%NAME% (install) "
-            popd
-            exit /b 0
-        )
-        call npm install html2canvas jspdf exceljs --loglevel error >nul 2>&1
-    ) else (
-        echo   [%FRAMEWORK%/%NAME%] Updating TimelineKit packages...
-        call npm install @timelinekit/core@latest @timelinekit/%FRAMEWORK%@latest html2canvas jspdf exceljs --loglevel error >nul 2>&1
-        if errorlevel 1 (
-            echo   [%FRAMEWORK%/%NAME%] npm install FAILED
-            set /a FAIL_COUNT+=1
-            set "FAILED=!FAILED!  %FRAMEWORK%/%NAME% (install) "
-            popd
-            exit /b 0
-        )
-    )
-)
-
 echo   [%FRAMEWORK%/%NAME%] Building...
+pushd "%DIR%"
 call npm run build >nul 2>&1
 if errorlevel 1 (
     echo   [%FRAMEWORK%/%NAME%] Build FAILED
@@ -114,7 +121,6 @@ if errorlevel 1 (
     popd
     exit /b 0
 )
-
 echo   [%FRAMEWORK%/%NAME%] OK
 popd
 exit /b 0
