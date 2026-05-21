@@ -1,0 +1,33 @@
+{
+  "name": "timelinekit-angular-resource-histogram-basic",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "ng serve",
+    "build": "ng build",
+    "start": "ng serve"
+  },
+  "dependencies": {
+    "@angular/animations": "^19.0.0",
+    "@angular/common": "^19.0.0",
+    "@angular/compiler": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
+    "@angular/platform-browser-dynamic": "^19.0.0",
+    "@angular/router": "^19.0.0",
+    "@timelinekit/angular": "^1.0.21",
+    "@timelinekit/core": "^1.0.21",
+    "exceljs": "^4.4.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.2",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.6.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.0.0",
+    "@angular/cli": "^19.0.0",
+    "@angular/compiler-cli": "^19.0.0",
+    "typescript": "~5.7.0"
+  }
+}
