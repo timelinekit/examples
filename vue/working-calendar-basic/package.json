@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@timelinekit/core": "^1.0.22",
-    "@timelinekit/vue": "^1.0.22",
+    "@timelinekit/core": "^1.1.23",
+    "@timelinekit/vue": "^1.1.23",
     "exceljs": "^4.4.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.2",

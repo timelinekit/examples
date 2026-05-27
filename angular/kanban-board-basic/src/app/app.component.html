@@ -1,0 +1,12 @@
+<div class="app">
+  <h1>TimelineKit - Kanban Board</h1>
+  <div class="toolbar">
+    <button (click)="onUndo()">Undo</button>
+    <button (click)="onRedo()">Redo</button>
+    <button (click)="onAddCard()">Add Card</button>
+    <button (click)="onAddColumn()">Add Column</button>
+  </div>
+  <div class="board-container">
+    <gk-kanban-board></gk-kanban-board>
+  </div>
+</div>
